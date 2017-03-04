@@ -23,4 +23,18 @@
  *      * min/max
  */
 
+struct BST_Node {
+    struct BST_Node* mLeft;
+    struct BST_Node* mRight;
+    int mValue;
+};
+
+typedef BST_Node BST_Node;
+
+int BST_contains(int value);
+void BST_inorderTraverse();
+void BST_preorderTraverse();
+void BST_postorderTraverse();
+void BST_delete(int value);
+
 #endif /* BINARY_SEARCH_TREE_H */

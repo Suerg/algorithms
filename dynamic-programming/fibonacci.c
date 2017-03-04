@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <time.h>
 
-int fib(int n);
-int fibMemo(int n);
+long fib(int n);
+long fibMemo(int n);
 
 int main()
 {
@@ -11,7 +11,7 @@ int main()
     double cputime1, cputime2;
 
     start = clock();
-    for (i=0; i<40; i++) {
+    for (i=0; i<42; i++) {
         fib(i);
     }
     end = clock();
@@ -19,17 +19,17 @@ int main()
     printf("time: %f seconds \n", cputime1);
 
     start = clock();
-    for (i=0; i<40; i++) {
+    for (i=0; i<42; i++) {
         fib(i);
     }
     end = clock();
     cputime2 = ((double) (end-start)) / CLOCKS_PER_SEC;
-    printf("time memo: %f seconds ]n", cputime2);
+    printf("time memo: %f seconds \n", cputime2);
 
     return 0;
 }
 
-int fib(int n)
+long fib(int n)
 {
     if (n<0) {
         return 0;
@@ -40,9 +40,9 @@ int fib(int n)
     }
 }
 
-int fibMemo(int n)
+long fibMemo(int n)
 {
-    int f[n+1];
+    long f[n+1];
     int i;
 
     f[0] = 0;

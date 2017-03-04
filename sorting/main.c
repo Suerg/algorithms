@@ -8,7 +8,7 @@ int main()
 {
     int array[5] = {5, 3, 2, 1, 4};
     printArray(array, 5);
-    bubbleSort(array, 5);
+    selectionSort(array, 5);
     printArray(array, 5);
 
     return 0;
