@@ -18,9 +18,25 @@ problems, there is not much in the way of configuration at this stage.
 
 I have configured the project to use CMake.
 
-So to build and run simply do:
+So to build simply do:
 
 ```
 cmake .
 make
 ```
+
+## Current TODO List
+
+* Implement Quicksort
+* Finish implementing the Heap
+* Implement the Binary Search Tree
+* Implement Mergesort
+* Solve some knapsack problems
+* Solve some rod cutting problems
+* Impelement the linked-list variations
+* Implement Red-Black Tree
+* Solve dynamic programming problems
+* Solve some linear programming problems
+* Implement Radix sort
+* Implement Bucket sort
+* Implement Sorting on linked-lists
