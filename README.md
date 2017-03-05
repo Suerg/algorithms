@@ -27,6 +27,7 @@ make
 
 ## Current TODO List
 
+* Make mergesort work with any type of array
 * Implement Quicksort
 * Finish implementing the Heap
 * Implement the Binary Search Tree

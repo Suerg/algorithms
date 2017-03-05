@@ -19,7 +19,7 @@
  *  two elements to compare and then it begins to merge
  *  the sorted subarrays.
  */
-void ASorts_mergesort(int* array, int len)
+void ASorts_mergesort_int(int* array, int len)
 {
     int* temp = malloc(sizeof(int)*len);
     ASorts_mergesortInternal(array, temp, 0, len-1);
@@ -38,7 +38,7 @@ void ASorts_mergesort(int* array, int len)
  *  use case as well as theirs. Note however, that the
  *  merge procedure is completely original.
  */
-void ASorts_mergesortInternal(int* array, int* temp,
+void ASorts_mergesortInternal_int(int* array, int* temp,
         int leftStart, int rightEnd)
 {
     if (leftStart >= rightEnd) {
@@ -64,7 +64,8 @@ void ASorts_mergesortInternal(int* array, int* temp,
  *    ^           ^
  *   leftStart rightEnd
  */
-void ASorts_merge(int* array, int* temp, int leftStart, int rightEnd)
+void ASorts_merge_int(int* array, int* temp, int leftStart,
+        int rightEnd)
 {
     int i, j, k;
     int leftEnd = (rightEnd+leftStart)/2;
