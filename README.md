@@ -30,7 +30,7 @@ make
 * Implement Quicksort
 * Finish implementing the Heap
 * Implement the Binary Search Tree
-* Implement Mergesort
+* ~~Implement Mergesort~~
 * Solve some knapsack problems
 * Solve some rod cutting problems
 * Impelement the linked-list variations
