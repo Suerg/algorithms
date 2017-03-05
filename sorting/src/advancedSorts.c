@@ -45,4 +45,7 @@ void ASorts_merge(int* array, int* temp, int leftStart, int rightEnd)
             }
         }
     }
+    for (i=leftStart; i<=rightEnd; i++) {
+        array[i] = temp[i];
+    }
 }
