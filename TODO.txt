@@ -1,0 +1,15 @@
+Current TODO List:
+
+    * Implement Quicksort
+    * Implement Heap
+    * Implement Binary Search Tree
+    * Implement Mergesort
+    * Implement Heapsort
+    * Implement Knapsack
+    * Implement Rod Cutting
+    * Implement variations on linked-lists
+    * Implement Red-Black Tree
+    * Do more dynamic programming algorithms
+    * Do some linear programming problems
+    * Implement Radix sort
+    * Implement Bucket sort
