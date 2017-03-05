@@ -16,5 +16,11 @@ there is no current use case; other than my own edification and the idea
 of eventually using the library to solve programming competition style
 problems, there is not much in the way of configuration at this stage.
 
-Anyone who is interested in the project can, of course, simply compile
-the needed module. I will also be making Makefiles for each module rather soon.
+I have configured the project to use CMake.
+
+So to build and run simply do:
+
+```
+cmake .
+make
+```
