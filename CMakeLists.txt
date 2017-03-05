@@ -8,6 +8,7 @@ include_directories(sorting/include)
 # project isn't done yet
 set(SOURCES
     sorting/src/basicSorts.c
+    sorting/src/advancedSorts.c
     data-structures/src/linked-list.c
     data-structures/src/queue.c
     data-structures/src/stack.c

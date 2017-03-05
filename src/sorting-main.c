@@ -1,15 +1,16 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "basicSorts.h"
 
 void printArray(int* array, int len);
 
 int main()
-{
-    int array[5] = {5, 3, 2, 1, 4};
-    printArray(array, 5);
-    selectionSort(array, 5);
-    printArray(array, 5);
+{               /*  i        j */
+    int array[6] = {1, 3, 6, 2, 4, 8};
+    int *temp = malloc(sizeof(int)*6);
+    ASorts_merge(array, temp, 0, 5);
+    printArray(temp, 6);
 
     return 0;
 }
