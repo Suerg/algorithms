@@ -4,6 +4,7 @@ project(algorithms)
 include_directories(data-structures/include)
 include_directories(sorting/include)
 
+set(CMAKE_BUILD_TYPE Debug)
 # only use certain files for now since the
 # project isn't done yet
 set(SOURCES
