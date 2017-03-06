@@ -173,9 +173,50 @@ LL_Node* LL_delete(LL_Node* head, int index)
 }
 
 /**
+ *  LL_deleteNode
+ *
+ *      The purpose of this function is to act as
+ *  a more user (and iterator-pattern) friendly version
+ *  of LL_delete.
+ */
+LL_Node* LL_deleteNode(LL_Node* node)
+{
+    /**
+     *      we can just use LL_delete since it
+     *  just takes a node and an index. it doesn't
+     *  have to actually be the front node for any reason.
+     */
+    return LL_delete(node, 0);
+}
+
+/**
  *  LL_deleteList
  *
  *      The purpose of this function is to remove
  *  an entire linked-list.
  */
-/* TODO: implement LL_dedleteList */
+void LL_deleteList(LL_Node* head)
+{
+    int i;
+    LL_Node* current;
+    LL_Node* next;
+    current = head;
+
+    /**
+     *      go to the actual head, just in case
+     *  the user didn't actually give it to us.
+     */
+    while (head->mPrevious) {
+        current = head->mPrevious;
+    }
+
+    /**
+     *      delete the list by deleting current,
+     *  and assigning the next node in the list (the new head)
+     *  to current. this is then deleted in turn until the list
+     *  has been completely deleted. this trick is possible since
+     *  I have written LL_deleteNode to return the next. so it is
+     *  following the iterator pattern.
+     */
+    while (current = LL_deleteNode(current));
+}

@@ -83,6 +83,14 @@ int LL_getNodeValue(LL_Node* node);
 LL_Node* LL_delete(LL_Node* head, int index);
 
 /**
+ *  LL_deleteNode
+ *
+ *      Deletes the given node. Returns the
+ *  next node in the list.
+ */
+LL_Node* LL_deleteNode(LL_Node* node);
+
+/**
  *  LL_deleteList
  *
  *      Deletes the entire linked-list pointed

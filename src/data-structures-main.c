@@ -90,6 +90,7 @@ void linkedListTest2()
         printf("%d\n", LL_getNodeValue(current));
         current = next;
     }
+    LL_deleteList(head); /* clean up after test*/
 }
 
 void linkedListTest3()
@@ -109,4 +110,5 @@ void linkedListTest3()
         printf("%d\n", LL_getNodeValue(currentFront));
         currentFront = LL_getNext(currentFront);
     }
+    LL_deleteList(head); /* clean up after test */
 }
