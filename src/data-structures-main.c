@@ -31,11 +31,13 @@ void stackTest();
 void queueTest();
 void linkedListTest();
 void linkedListTest2();
+void linkedListTest3();
 
 int main()
 {
     linkedListTest();
     linkedListTest2();
+    linkedListTest3();
     return 0;
 }
 
@@ -87,5 +89,24 @@ void linkedListTest2()
         next = LL_getNext(current);
         printf("%d\n", LL_getNodeValue(current));
         current = next;
+    }
+}
+
+void linkedListTest3()
+{
+    int i;
+    LL_Node* end = LL_initNode(1);
+    LL_Node* head = end;
+    LL_Node* currentFront = end;
+
+    printf("Test Case #3\n");
+
+    for (i=2; i<=50; i++) {
+        currentFront = LL_prepend(currentFront, i);
+    }
+    head = currentFront; /* save a ref to the front */
+    for (i=1; i<=50; i++) {
+        printf("%d\n", LL_getNodeValue(currentFront));
+        currentFront = LL_getNext(currentFront);
     }
 }

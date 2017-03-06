@@ -56,6 +56,35 @@ LL_Node* LL_append(LL_Node* head, int value)
 }
 
 /**
+ *  LL_prepend
+ *
+ *      The purpose of this function is to add a node
+ *  to the front of a list. This can be useful for implementing
+ *  things like queues. The returned node will be the new head.
+ */
+LL_Node* LL_prepend(LL_Node* head, int value)
+{
+    LL_Node* oldFront = head;
+    LL_Node* newFront;
+    /**
+     *      traverse the list
+     *  needed in case the user wanted to prepend to a node
+     *  that isn't the head without traversing themselves.
+     *
+     *  TODO: add method that allows the user to insert in middle
+     */
+    while (oldFront->mPrevious) {
+        oldFront=oldFront->mPrevious;
+    }
+    /* set the previous of head to new */
+    newFront = LL_initNode(value);
+    oldFront->mPrevious = newFront;
+    /* make the new node point to the old head */
+    newFront->mNext = oldFront;
+    return newFront;
+}
+
+/**
  *  LL_getElement
  *
  *      The purpose of this node is to act like

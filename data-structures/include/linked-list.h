@@ -38,6 +38,13 @@ LL_Node* LL_initNode(int value);
 LL_Node* LL_append(LL_Node* head, int value);
 
 /**
+ *  LL_prepend
+ *
+ *      Inserts an element at the start of the list.
+ */
+LL_Node* LL_prepend(LL_Node* head, int value);
+
+/**
  *  LL_getElement
  *
  *      Gets the node at the given index.
