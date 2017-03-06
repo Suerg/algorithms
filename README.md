@@ -34,7 +34,8 @@ make
 * ~~Implement Mergesort~~
 * Solve some knapsack problems
 * Solve some rod cutting problems
-* Impelement the linked-list variations
+* Impelement a circularly linked list
+* ~~Implement a doubly-linked list~~
 * Implement Red-Black Tree
 * Solve dynamic programming problems
 * Solve some linear programming problems
