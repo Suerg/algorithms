@@ -1,31 +1,63 @@
 #include <stdio.h>
 #include "basicSorts.h"
 
-void swap(int *array, int i, int j)
+/**
+ * Based on:
+ * http://stackoverflow.com/questions/13469381/how-to-make-generic-function-using-void-in-c
+ */
+void Sorts_swap(void* p1, void* p2, size_t size)
 {
-    int temp = array[i];
-    array[i] = array[j];
-    array[j] = temp;
+    size_t i;
+    char* byte1 = (char*)p1;
+    char* byte2 = (char*)p2;
+    char byte;
+
+    for (i=0; i<size; i++) {
+        byte     = byte1[i];
+        byte1[i] = byte2[i];
+        byte2[i] = byte;
+    }
 }
 
-void insertionSort(int* array, int len)
+void Sorts_insertionSort(void* array, int len, size_t size,
+        int (*cmp)(const void*, const void *))
 {
     int i, j;
     for (i=1; i<len; i++) {
-        for (j=i; array[j-1] > array[j]; j--) {
-            swap(array, j, j-1);
+        for (j=i;
+                cmp(
+                    (char *)array+(j-1)*size,
+                    (char *)array+j*size
+                ) == 1;
+                /*array[j-1] > array[j];*/
+                j--) {
+            Sorts_swap(
+                    (char *)array+j*size,
+                    (char *)array+(j-1)*size, size);
         }
     }
 }
 
-void bubbleSort(int* array, int len)
+void Sorts_bubbleSort(void* array, int len, size_t size,
+        int (*cmp)(const void*, const void*))
 {
     int i, j;
     for (i=0; i<len; i++) {
         for (j=len-1; j>=i+1; j--) {
-            if (array[j] < array[j-1]) {
-                swap(array, j, j-1);
+            if (cmp(
+                    (char *)array+j*size,
+                    (char *)array+(j-1)*size
+                    )
+                    == -1) {
+                 Sorts_swap(
+                        (char *)array+j*size,
+                        (char *)array+(j-1)*size,
+                        size
+                        );
             }
+            /*if (array[j] < array[j-1]) {*/
+                /*Sorts_swap(&array[j], &array[j-1], size);*/
+            /*}*/
         }
     }
 }
@@ -41,18 +73,28 @@ void bubbleSort(int* array, int len)
  *  subarray. This means, that each time the element is put into the sorted
  *  subarray it is in its final position.
  */
-void selectionSort(int* array, int len)
+void Sorts_selectionSort(void* array, int len, size_t size,
+        int (*cmp)(const void*, const void*))
 {
     int i, j;
     for (i=0; i<len; i++) {
         int min = i;
         /* sorted to end */
         for (j=i; j<len; j++) {
-            if (array[j] < array[min]) {
+            if (cmp(
+                        (char *)array+j*size,
+                        (char *)array+min*size
+                    ) == -1) {
                 min = j;
             }
+            /*if (array[j] < array[min]) {*/
+                /*min = j;*/
+            /*}*/
         }
-        swap(array, i, min);
+        Sorts_swap(
+                (char *)array+i*size,
+                (char *)array+min*size,
+                size);
     }
 
 }
