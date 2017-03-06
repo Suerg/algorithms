@@ -11,8 +11,11 @@
 void ASorts_quicksort(int* array, int len);
 void ASorts_quicksort_internal(int* array, int len, int left, int right);
 
-void ASorts_mergesort(void* array, int len);
-void ASorts_mergesortInternal(void* array, int* temp,
-        int leftStart, int rightEnd);
+void ASorts_mergesort(void* array, int len, size_t size,
+        int (*cmp)(const void*, const void*));
+void ASorts_mergesortInternal(void* array, void* temp,
+        int leftStart, int rightEnd, size_t size,
+        int (*cmp)(const void*, const void*));
 void ASorts_merge(void* array, void* temp, int leftStart,
-        int rightStart);
+        int rightStart, size_t size,
+        int (*cmp)(const void*, const void*));

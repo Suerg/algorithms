@@ -98,3 +98,30 @@ void Sorts_selectionSort(void* array, int len, size_t size,
     }
 
 }
+
+/**
+ *  Sorts_intcmp
+ *
+ *      Int comparison function
+ *  follows the same standard as qsort.
+ */
+int Sorts_intcmp(const void* a, const void* b)
+{
+    if ( *(int *)a < *(int *)b ) return -1;
+    if ( *(int *)a == *(int *)b ) return 0;
+    if ( *(int *)a > *(int *)b ) return 1;
+}
+
+int Sorts_charcmp(const void* a, const void* b)
+{
+    if ( *(char *)a < *(char *)b ) return -1;
+    if ( *(char *)a == *(char *)b ) return 0;
+    if ( *(char *)a > *(char *)b ) return 1;
+}
+
+int Sorts_longcmp(const void* a, const void* b)
+{
+    if ( *(long *)a < *(long *)b ) return -1;
+    if ( *(long *)a == *(long *)b ) return 0;
+    if ( *(long *)a > *(long *)b ) return 1;
+}

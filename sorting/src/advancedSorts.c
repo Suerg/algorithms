@@ -19,10 +19,11 @@
  *  two elements to compare and then it begins to merge
  *  the sorted subarrays.
  */
-void ASorts_mergesort_int(int* array, int len)
+void ASorts_mergesort(void* array, int len, size_t size,
+        int (*cmp)(const void*, const void*))
 {
-    int* temp = malloc(sizeof(int)*len);
-    ASorts_mergesortInternal(array, temp, 0, len-1);
+    void* temp = malloc(size*len);
+    ASorts_mergesortInternal(array, temp, 0, len-1, size, cmp);
 }
 
 /**
@@ -38,16 +39,19 @@ void ASorts_mergesort_int(int* array, int len)
  *  use case as well as theirs. Note however, that the
  *  merge procedure is completely original.
  */
-void ASorts_mergesortInternal_int(int* array, int* temp,
-        int leftStart, int rightEnd)
+void ASorts_mergesortInternal(void* array, void* temp,
+        int leftStart, int rightEnd, size_t size,
+        int (*cmp)(const void*, const void*))
 {
     if (leftStart >= rightEnd) {
         return;
     }
     int middle = (leftStart+rightEnd)/2;
-    ASorts_mergesortInternal(array, temp, leftStart, middle);
-    ASorts_mergesortInternal(array, temp, middle+1, rightEnd);
-    ASorts_merge(array, temp, leftStart, rightEnd);
+    ASorts_mergesortInternal(array, temp, leftStart, middle,
+            size, cmp);
+    ASorts_mergesortInternal(array, temp, middle+1, rightEnd,
+            size, cmp);
+    ASorts_merge(array, temp, leftStart, rightEnd, size, cmp);
 }
 
 /**
@@ -64,30 +68,38 @@ void ASorts_mergesortInternal_int(int* array, int* temp,
  *    ^           ^
  *   leftStart rightEnd
  */
-void ASorts_merge_int(int* array, int* temp, int leftStart,
-        int rightEnd)
+void ASorts_merge(void* array, void* temp, int leftStart,
+        int rightEnd, size_t size,
+        int (*cmp)(const void*, const void*))
 {
     int i, j, k;
     int leftEnd = (rightEnd+leftStart)/2;
     int rightStart = leftEnd+1;
     for (i=leftStart, j=rightStart, k=leftStart; i<=leftEnd || j<=rightEnd; k++) {
         if (i>leftEnd) { /* left subarray done */
-            temp[k] = array[j];
+            *((char *)temp+k*size) = *((char *)array+j*size);
+            /*temp[k] = array[j];*/
             j++;
         } else if (j>rightEnd) { /* right subarray done */
-            temp[k] = array[i];
+            *((char *)temp+k*size) = *((char *)array+i*size);
+            /*temp[k] = array[i];*/
             i++;
         } else { /* neither done yet */
-            if (array[i] < array[j]) {
-                temp[k] = array[i];
+            if (cmp((char *)array+i*size, (char *)array+j*size) < 0)
+                /*array[i] < array[j]*/
+                {
+                *((char *)temp+k*size) = *((char *)array+i*size);
+                /*temp[k] = array[i];*/
                 i++;
             } else {
-                temp[k] = array[j];
+                *((char *)temp+k*size) = *((char *)array+j*size);
+                /*temp[k] = array[j];*/
                 j++;
             }
         }
     }
     for (i=leftStart; i<=rightEnd; i++) {
-        array[i] = temp[i];
+        /*array[i] = temp[i];*/
+        *((char *)array+i*size) = *((char *)temp+i*size);
     }
 }
