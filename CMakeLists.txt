@@ -13,6 +13,6 @@ set(SOURCES
     data-structures/src/linked-list.c
     data-structures/src/queue.c
     data-structures/src/stack.c
-    src/anagram.c)
+    src/data-structures-main.c)
 
-add_executable(anagram ${SOURCES})
+add_executable(ds-main ${SOURCES})

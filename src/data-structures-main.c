@@ -30,10 +30,12 @@
 void stackTest();
 void queueTest();
 void linkedListTest();
+void linkedListTest2();
 
 int main()
 {
     linkedListTest();
+    linkedListTest2();
     return 0;
 }
 
@@ -59,8 +61,31 @@ void queueTest()
 
 void linkedListTest()
 {
-    Node* head = LL_initNode(0, 1);
-    LL_insert(head, 3);
-    printf("%d\n", LL_getElement(head, 0));
-    printf("%d\n", LL_getElement(head, 1));
+    printf("Test Case #1\n");
+    LL_Node* head = LL_initNode(1);
+    LL_append(head, 3);
+    printf("%d\n", LL_getValue(head, 0));
+    head = LL_delete(head, 0);
+    printf("%d\n", LL_getValue(head, 0));
+    LL_delete(head, 0); /* delete the last node */
+}
+
+void linkedListTest2()
+{
+    int i;
+    LL_Node* head = LL_initNode(1);
+    LL_Node* current = head;
+    LL_Node* next;
+
+    printf("Test Case #2\n");
+
+    for (i=2; i<=50; i++) {
+        current = LL_append(current, i);
+    }
+    current = head; /* reset the current to head for printing */
+    for (i=0; i<50; i++) {
+        next = LL_getNext(current);
+        printf("%d\n", LL_getNodeValue(current));
+        current = next;
+    }
 }
